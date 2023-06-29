@@ -78,7 +78,7 @@ def decompile_apk(apk_path, output_path, verbose, odex_file=None):
     os.makedirs(output_dir)
 
     print("[+] Moving reverse engineering files")
-    re_list = os.listdir(apk_re)
+    re_list = os.listdir("/app/apk-decompiler/"+apk_re)
     for re_files in re_list:
         shutil.move(os.path.join(apk_re, re_files), output_dir)
 
