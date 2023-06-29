@@ -63,11 +63,13 @@ def decompile_apk(apk_path, output_path, verbose, odex_file=None):
 
     print("[+] Decompiling the jar")
     apk_java = "temp/" + apk_name + "_java/src"
+    os.makedirs(apk_java)
     call(jd_path + " " + apk_jar + " -od " + apk_java,
          stdout=stdout, stderr=stderr, shell=True)
 
     print("[+] Reverse engineering the apk")
-    apk_re = "temp/" + apk_name + "_unziped"
+    apk_re = "temp/" + apk_name + "_re"
+    os.makedirs(apk_re)
     call(apktool_path + " d " + apk_path + " -o " + apk_re,
          stdout=stdout, stderr=stderr, shell=True)
 
