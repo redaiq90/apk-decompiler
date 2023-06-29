@@ -67,7 +67,7 @@ def decompile_apk(apk_path, output_path, verbose, odex_file=None):
          stdout=stdout, stderr=stderr, shell=True)
 
     print("[+] Reverse engineering the apk")
-    apk_re = "temp/" + apk_name + "_re"
+    apk_re = "temp/" + apk_name + "_unziped"
     call(apktool_path + " d " + apk_path + " -o " + apk_re,
          stdout=stdout, stderr=stderr, shell=True)
 
@@ -78,7 +78,7 @@ def decompile_apk(apk_path, output_path, verbose, odex_file=None):
     os.makedirs(output_dir)
 
     print("[+] Moving reverse engineering files")
-    re_list = os.listdir("/app/apk-decompiler/"+apk_re)
+    re_list = os.listdir(apk_re)
     for re_files in re_list:
         shutil.move(os.path.join(apk_re, re_files), output_dir)
 
